@@ -32,11 +32,6 @@ project "optick"
 		},
 	}
 
-	links
-	{
-		"dxgi",
-	}
-
 	filter "system:windows"
 		systemversion "latest"
 		cppdialect "C++17"
