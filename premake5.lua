@@ -2,6 +2,7 @@ project "optick"
 	kind "StaticLib"
 	language "C++"
 	staticruntime "off"
+	warnings "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -9,7 +10,7 @@ project "optick"
 	defines
 	{
 		"OPTICK_EXPORTS",
-		"OPTICK_ENABLE_GPU_D3D12=1",
+		"OPTICK_ENABLE_GPU_D3D12=0",
 		"OPTICK_ENABLE_GPU_VULKAN=0",
 		"_SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING"
 	}
@@ -25,22 +26,14 @@ project "optick"
 		"src"
 	}
 
-	vpaths
-	{
-		["api"] = {
-			"src/optick.h",
-			"src/optick.config.h",
-		},
-	}
-
 	filter "system:windows"
 		systemversion "latest"
-		cppdialect "C++17"
+		cppdialect "C++20"
 
 	filter "system:linux"
 		pic "On"
 		systemversion "latest"
-		cppdialect "C++17"
+		cppdialect "C++20"
 
 	filter "configurations:Debug"
 		runtime "Debug"
